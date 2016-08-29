@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_dashboard"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Dashboard" />
+        <item
+            android:id="@+id/nav_due_task"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Due Task" />
+        <item
+            android:id="@+id/nav_completed_task"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Completed Task" />
+        <item
+            android:id="@+id/nav_remaining_task"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Remaining Task" />
+    </group>
+
+    <item android:title="Reports">
+        <menu>
+            <item
+                android:id="@+id/nav_report_client"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Client" />
+            <item
+                android:id="@+id/nav_report_employee"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Employee" />
+            <item
+                android:id="@+id/nav_report_status"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Status" />
+        </menu>
+    </item>
+
+</menu>

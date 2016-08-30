@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.hardik.salestask.models.Department;
 
@@ -85,11 +84,10 @@ public class MyDashboardRecyclerViewAdapter extends RecyclerView.Adapter<MyDashb
             mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(view.getContext(), "Position = " + getLayoutPosition(), Toast.LENGTH_SHORT).show();
                     if (mListener != null) {
                         Log.d("test", "Itemcliked");
-                        //mListener.onListFragmentInteraction(mValues.get(getLayoutPosition()));
-                        mListener.onListFragmentInteraction(null);
+                        //mListener.onListItemClicked(mValues.get(getLayoutPosition()));
+                        mListener.onListItemClicked(null);
                     }
                 }
             });
@@ -106,7 +104,11 @@ public class MyDashboardRecyclerViewAdapter extends RecyclerView.Adapter<MyDashb
             imgAdd.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(view.getContext(), "Image View pos = " + getLayoutPosition(), Toast.LENGTH_SHORT).show();
+                    if (mListener != null) {
+                        Log.d("test", "Itemcliked");
+                        //mListener.onListItemClicked(mValues.get(getLayoutPosition()));
+                        mListener.onAddTaskClicked(null);
+                    }
                 }
             });
         }

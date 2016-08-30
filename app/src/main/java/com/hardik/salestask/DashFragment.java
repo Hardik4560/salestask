@@ -84,6 +84,7 @@ public class DashFragment extends Fragment {
     }
 
     public interface OnListFragmentInteractionListener {
-        void onListFragmentInteraction(Department department);
+        void onListItemClicked(Department department);
+        void onAddTaskClicked(Department department);
     }
 }

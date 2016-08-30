@@ -9,15 +9,14 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
+import com.hardik.salestask.core.BaseActivity;
 import com.hardik.salestask.models.Department;
 
-public class DashboardActivity extends AppCompatActivity
+public class DashboardActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener, DashFragment.OnListFragmentInteractionListener {
 
     @Override
@@ -119,6 +118,13 @@ public class DashboardActivity extends AppCompatActivity
     }
 
     @Override
-    public void onListFragmentInteraction(Department department) {
+    public void onListItemClicked(Department department) {
+
+    }
+
+    @Override
+    public void onAddTaskClicked(Department department) {
+        Intent intent = new Intent(DashboardActivity.this, AddTaskActivity.class);
+        startActivity(intent);
     }
 }

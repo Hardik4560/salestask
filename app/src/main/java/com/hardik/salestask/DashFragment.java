@@ -18,8 +18,13 @@ import java.util.ArrayList;
 public class DashFragment extends Fragment {
 
     public static final String KEY_COLUMN_COUNT = "COLUMN_COUNT";
+    private static final String TAG = DashFragment.class.getSimpleName();
 
     private int mColumnCount = 2;
+
+    private String[] CONTACT_PERSON = {"Mehul", "Shweta", "Vijay", "Abhilash"};
+    private String[] NAME = {"Support", "Sales", "Production", "Marketing"};
+    private int[] COLORS = {android.R.color.holo_green_light, android.R.color.holo_red_light, android.R.color.holo_blue_light, android.R.color.holo_orange_light};
 
     private OnListFragmentInteractionListener mListener;
 
@@ -38,10 +43,19 @@ public class DashFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_item_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_dashboard_item_list, container, false);
+
+        View home = view.findViewById(android.R.id.home);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((DashboardActivity) getActivity()).toggleDrawer();
+            }
+        });
 
         // Set the adapter
         Context context = view.getContext();
+
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list);
         if (mColumnCount <= 1) {
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
@@ -49,9 +63,21 @@ public class DashFragment extends Fragment {
             recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
 
-        recyclerView.setAdapter(new MyDashboardRecyclerViewAdapter(new ArrayList<Department>(), mListener));
+
+        recyclerView.setAdapter(new MyDashboardRecyclerViewAdapter(getActivity(), generateDepartments(), mListener));
 
         return view;
+    }
+
+    private ArrayList generateDepartments() {
+        ArrayList depArrayList = new ArrayList<Department>();
+
+        for (int i = 0; i < 4; i++) {
+            Department department = new Department(CONTACT_PERSON[i], COLORS[i], NAME[i]);
+            depArrayList.add(department);
+        }
+
+        return depArrayList;
     }
 
 
@@ -62,7 +88,7 @@ public class DashFragment extends Fragment {
             mListener = (OnListFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnListFragmentInteractionListener");
+                    + " must implement OnTaskListFragmentInteractionListener");
         }
     }
 
@@ -73,7 +99,7 @@ public class DashFragment extends Fragment {
             mListener = (OnListFragmentInteractionListener) activity;
         } else {
             throw new RuntimeException(activity.toString()
-                    + " must implement OnListFragmentInteractionListener");
+                    + " must implement OnTaskListFragmentInteractionListener");
         }
     }
 
@@ -85,6 +111,12 @@ public class DashFragment extends Fragment {
 
     public interface OnListFragmentInteractionListener {
         void onListItemClicked(Department department);
+
         void onAddTaskClicked(Department department);
+    }
+
+    public static String getMonth(int month) {
+        String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+        return monthNames[month];
     }
 }

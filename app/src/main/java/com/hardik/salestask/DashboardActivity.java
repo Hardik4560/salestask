@@ -1,9 +1,11 @@
 package com.hardik.salestask;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.view.Gravity;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,6 +18,8 @@ import android.view.MenuItem;
 import com.hardik.salestask.core.BaseActivity;
 import com.hardik.salestask.models.Department;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class DashboardActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener, DashFragment.OnListFragmentInteractionListener {
 
@@ -23,17 +27,9 @@ public class DashboardActivity extends BaseActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -119,12 +115,27 @@ public class DashboardActivity extends BaseActivity
 
     @Override
     public void onListItemClicked(Department department) {
-
+        Intent intent = new Intent(DashboardActivity.this, TaskListActivity.class);
+        startActivity(intent);
     }
 
     @Override
     public void onAddTaskClicked(Department department) {
         Intent intent = new Intent(DashboardActivity.this, AddTaskActivity.class);
         startActivity(intent);
+    }
+
+    public void toggleDrawer() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(Gravity.LEFT)) {
+            drawer.closeDrawer(Gravity.LEFT);
+        } else {
+            drawer.openDrawer(Gravity.LEFT);
+        }
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

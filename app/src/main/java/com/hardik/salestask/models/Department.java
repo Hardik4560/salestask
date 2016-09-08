@@ -11,9 +11,18 @@ public class Department {
 
     Person person;
 
+    String contactPerson;
+    int color;
+
     String name;
 
     List<Task> taskList;
+
+    public Department(String contactPerson, int color, String name) {
+        this.contactPerson = contactPerson;
+        this.color = color;
+        this.name = name;
+    }
 
     public String getName() {
         return name;
@@ -45,5 +54,21 @@ public class Department {
 
     public void setTaskList(List<Task> taskList) {
         this.taskList = taskList;
+    }
+
+    public String getContactPerson() {
+        return contactPerson;
+    }
+
+    public void setContactPerson(String contactPerson) {
+        this.contactPerson = contactPerson;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 }

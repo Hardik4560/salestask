@@ -1,6 +1,8 @@
 package com.hardik.salestask.core;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,14 +14,21 @@ import android.widget.EditText;
 
 import com.hardik.salestask.R;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 /**
  * Created by hardik on 30/8/16.
  */
 public class BaseActivity extends AppCompatActivity {
 
+    ProgressDialog progressDialog;
+
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading");
     }
 
     @Override
@@ -32,9 +41,22 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
+    public void showProgressDialog(String message) {
+        if (!progressDialog.isShowing()) {
+            progressDialog.setMessage(message);
+            progressDialog.show();
+        }
+    }
+
+    public void dimissProgressDialog() {
+        if (progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
+    }
+
     public static void hideSoftKeyboard(Activity activity) {
         InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(
-                        Activity.INPUT_METHOD_SERVICE);
+                Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(
                 activity.getCurrentFocus().getWindowToken(), 0);
     }
@@ -58,5 +80,10 @@ public class BaseActivity extends AppCompatActivity {
                 setupUI(innerView);
             }
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

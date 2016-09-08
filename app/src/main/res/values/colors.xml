@@ -1,6 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#3498db</color>
+    <color name="colorPrimaryDark">#2980b9</color>
     <color name="colorAccent">#FF4081</color>
+
+
+    <color name="task_color">#fff</color>
+
+
+    <!--list_view_xml color   -->
+    <color name="listview_title">#848486</color>
+    <color name="listview_time">#9A999E</color>
+    <color name="listview_task">#9A999E</color>
+
+
+    <!--toolbar color-->
+    <color name="month_name_color">#000</color>
+
+    <color name="calenderback">#F5F6Fb</color>
+    <color name="oncalenderselect">#5250A8</color>
+    <color name="weektext">#A1A2A7</color>
+    <color name="daytext">#1D1D26</color>
+    <color name="backgroundcolour">#FFFFFF</color>
+
+    <color name="toolbar_background">#fffdfdfd</color>
+
+    <color name="date_custom_item_unselected_indicator">#F5F6Fb</color>
+    <color name="date_custom_item_selected_indicator">#50D2C2</color>
+
+
+    <color name="date_item_unselected_indicator">#F5F6Fb</color>
+    <color name="date_item_selected_indicator">#5250A8</color>
+
+    <color name="date_item_background">#F5F6Fb</color>
+    <color name="date_item_month_name">#A1A2A7</color>
+    <color name="date_item_day_name">#a3a3a6</color>
+    <color name="date_item_day">#1d1d26</color>
+
+
+    <color name="date_custom_item_background">#FFFFFF</color>
+    <color name="date_custom_item_month_name">#FFFFFF</color>
+    <color name="date_custom_item_day_name">#FFFFFF</color>
+    <color name="date_custom_item_day">#FFFFFF</color>
+
+    <color name="text_color">#1d1d26</color>
+    <color name="subtext_color">#a8a8aa</color>
+    <color name="calander_baground_color">#50d2c2</color>
+
+    <color name="black">#000000</color>
+    <color name="dark_red">#B71C1C</color>
+
+
+    <color name="dark_sky">#379387</color>
+    <color name="light_sky">#47bdae</color>
+
+    <color name="hintColor">#a8a888</color>
+
+    <color name="textColor">#1d1d26</color>
+    <color name="lightColor">#a8a8aa</color>
+    <color name="dividerColor">#f3f3f4</color>
+
+    <color name="background">#ffffff</color>
+
+    <color name="gridBackground">#f8f8f8</color>
+
+    <color name="cardBackgroundColor">#ffffff</color>
+    <color name="action_bar">#4f6bf0</color>
+
 </resources>

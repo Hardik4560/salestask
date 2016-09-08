@@ -4,23 +4,24 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_dashboard"
-            android:icon="@drawable/ic_menu_camera"
+
             android:title="Dashboard" />
         <item
             android:id="@+id/nav_due_task"
-            android:icon="@drawable/ic_menu_gallery"
             android:title="Due Task" />
         <item
             android:id="@+id/nav_completed_task"
-            android:icon="@drawable/ic_menu_slideshow"
+
             android:title="Completed Task" />
         <item
             android:id="@+id/nav_remaining_task"
-            android:icon="@drawable/ic_menu_manage"
+
             android:title="Remaining Task" />
     </group>
 
-    <item android:title="Reports">
+    <item
+        android:title="Reports"
+        android:visible="false">
         <menu>
             <item
                 android:id="@+id/nav_report_client"
